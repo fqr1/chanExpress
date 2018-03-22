@@ -74,7 +74,7 @@ const saveContent = (content, board, id) => {
     }
 
 
-    const semanticUrl = content[0].semantic_url;
+    const semanticUrl = content[0].semantic_url || '';
 
     console.log('+++++ SEMANTIC URL', semanticUrl);
 
@@ -84,7 +84,7 @@ const saveContent = (content, board, id) => {
            const url = FourchanService.getFileUrl(board, c.tim, c.ext);
            console.log('URL:', url);
            //check first if file already exists
-            const fileName = `${id}-${c.tim}${c.ext}`;
-            return downloadPromise(url, `${id}-${c.tim}${c.ext}`);
+            const fileName = `${id}-${semanticUrl}-${c.tim}${c.ext}`;
+            return downloadPromise(url, fileName);
     });
 };
