@@ -74,7 +74,7 @@ const saveContent = (content, board, id) => {
     }
 
 
-    const semanticUrl = c[0].semantic_url;
+    const semanticUrl = content[0].semantic_url;
 
     console.log('+++++ SEMANTIC URL', semanticUrl);
 
