@@ -38,7 +38,15 @@ exports.save = (board, id) => {
 
 const downloadPromise = (url, filename) => {
     return new Promise((resolve, reject) => {
-        download(url, `${global.savesDir}/${filename}`, err => err ? reject(err) : resolve({saved: 'done'}))
+        const localFile = `${global.savesDir}/${filename}`;
+
+        if(fs.existsSync(localFile)){
+            console.log('File already exists!')
+            resolve({saved: 'already exists'});
+            return;
+        }
+
+        download(url, localFile, err => err ? reject(err) : resolve({saved: 'done'}))
     })
 }
 
@@ -70,6 +78,8 @@ const saveContent = (content, board, id) => {
         .map(c => {
            const url = FourchanService.getFileUrl(board, c.tim, c.ext);
            console.log('URL:', url);
+           //check first if file already exists
+            const fileName = `${id}-${c.tim}${c.ext}`;
             return downloadPromise(url, `${id}-${c.tim}${c.ext}`);
     });
 };
