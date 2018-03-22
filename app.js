@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/chan/file', express.static(path.join(__dirname, 'saves')));
 
 global.savesDir = path.resolve(`${__dirname}/saves`);
 // /chan because proxy server
