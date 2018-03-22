@@ -73,6 +73,11 @@ const saveContent = (content, board, id) => {
         return null;
     }
 
+
+    const semanticUrl = c[0].semantic_url;
+
+    console.log('+++++ SEMANTIC URL', semanticUrl);
+
     content
         .filter(c => c.tim)
         .map(c => {

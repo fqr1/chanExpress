@@ -39,11 +39,11 @@ exports.getThreads = (boardParam) => {
 
 exports.getContent = (boardParam, thread) => {
     return fetch(content(boardParam, thread)).then(r => {
-        console.log('GOT CONTENT - ', r);
+        //console.log('GOT CONTENT - ', r);
         return r.json();
     }).then(debug => {
-        console.log('debug', debug);
-        console.log('Object.keys(debug)', Object.keys(debug));
+        //console.log('debug', debug);
+        //console.log('Object.keys(debug)', Object.keys(debug));
         return debug
     })
 }
