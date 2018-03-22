@@ -23,9 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 global.savesDir = path.resolve(`${__dirname}/saves`);
-
-app.use('/', index);
-app.use('/api/v1', apiV1)
+// /chan because proxy server
+app.use('/chan', index);
+app.use('/chan/api/v1', apiV1)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
